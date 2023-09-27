@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe User do
   describe 'validations' do
     subject(:user_validation) { user.valid? }
 
     shared_examples 'invalidates the user record' do
-      it { expect(user_validation).to eq(false) }
+      it { expect(user_validation).to be(false) }
     end
 
     context 'with email validation' do

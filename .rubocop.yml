@@ -1,0 +1,36 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+  Exclude:
+    - "db/schema.rb"
+    - "config/**/*"
+    - "config.ru"
+    - "bin/**/*"
+    - "db/migrate/*"
+    - "db/seeds.rb"
+    - "**/*.txt"
+    - "**/.keep"
+    - "spec/rails_helper.rb"
+    - "vendor/**/*"
+    - "Rakefile"
+    - "lib/odbc_adapter-5.0.5/**/*"
+
+  TargetRubyVersion: 3.1.2
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 40
+
+Metrics/BlockLength:
+  Max: 35
+
+RSpec/NestedGroups:
+  Max: 8

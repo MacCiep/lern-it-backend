@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  user_notification_mailer:
+    missed_learning_event:
+      subject: Reminder of learning event!

@@ -1,0 +1,31 @@
+exclude_paths:
+  - config/**/*
+  - db/*/*
+  - vendor/**/*
+
+detectors:
+  IrresponsibleModule:
+    enabled: false
+  LongParameterList:
+    max_params: 5
+  TooManyStatements:
+    max_statements: 10
+  UncommunicativeMethodName:
+    enabled: false
+  UncommunicativeModuleName:
+    enabled: false
+  MissingSafeMethod:
+    enabled: false
+  NestedIterators:
+    max_allowed_nesting: 2
+  TooManyInstanceVariables:
+    max_instance_variables: 5
+  TooManyMethods:
+    max_methods: 22
+  RepeatedConditional:
+    enabled: false
+
+directories:
+  "app/mailers/**":
+    InstanceVariableAssumption:
+      enabled: false
