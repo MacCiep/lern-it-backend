@@ -1,7 +1,6 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<<<<<<< HEAD
+# lern-it-backend
+Ruby on Rails project that aims to improve the user's learning experience.
 
 Things you may want to cover:
 
