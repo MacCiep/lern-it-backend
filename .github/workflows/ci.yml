@@ -48,11 +48,13 @@ jobs:
 
 
       - name: Set up database schema
-        run: bundle exec rails db:prepare
+        run: |
+          bundle exec rails db:prepare
 
 
       - name: Run tests
-        run: bundle exec rspec .
+        run: |
+          bundle exec rspec ./spec
 
   lint:
     runs-on: ubuntu-latest
