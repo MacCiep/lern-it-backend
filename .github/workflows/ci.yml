@@ -68,7 +68,10 @@ jobs:
       #- name: Security audit dependencies
       #   run: bin/bundler-audit --update
       - name: Security audit application code
-        run: bin/brakeman -q -w2
+        uses: reviewdog/action-brakeman@v2
+        with:
+          brakeman_version: gemfile
+          fail_on_error: true
 
       - name: Rubocop
         uses: reviewdog/action-rubocop@v2
