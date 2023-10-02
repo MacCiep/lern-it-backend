@@ -48,7 +48,7 @@ jobs:
 
 
       - name: Set up database schema
-        run: bin/rails db:schema:load
+        run: bundle exec rails db:prepare
 
 
       - name: Run tests
