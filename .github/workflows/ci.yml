@@ -1,4 +1,4 @@
-name: "Ruby on Rails CI"
+name: Continuous Integration
 on:
   push:
     branches: [ "main" ]
