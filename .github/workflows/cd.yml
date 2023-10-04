@@ -28,6 +28,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
+          images: |
+            ${{ secrets.AWS_ACCOUNT_ARN }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}
           tags: |
             type=sha,format=short
 
