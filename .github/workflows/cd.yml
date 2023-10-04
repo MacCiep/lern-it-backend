@@ -31,7 +31,7 @@ jobs:
           images: |
             ${{ secrets.AWS_ACCOUNT_ARN }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}
           tags: |
-            type=sha,format=short,prefix=lern-it-
+            type=sha,format=short,prefix=
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
