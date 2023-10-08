@@ -29,6 +29,9 @@ Style/Documentation:
 RSpec/SpecFilePathFormat:
   Enabled: false
 
+RSpec/FilePath:
+  Enabled: false
+
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
