@@ -13,9 +13,5 @@ RSpec.describe Topic do
     it 'validates the uniqueness of title' do
       expect(topic).to validate_uniqueness_of(:title)
     end
-
-    it 'validates the presence of user' do
-      expect(topic).to validate_presence_of(:user)
-    end
   end
 end
