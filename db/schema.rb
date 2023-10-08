@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_06_195640) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_08_090422) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "flashcards", force: :cascade do |t|
+    t.text "question"
+    t.text "answer"
+    t.bigint "topic_id", null: false
+    t.integer "difficulty", default: 0
+    t.integer "correct", default: 0
+    t.integer "times_vied", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_flashcards_on_topic_id"
+  end
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
@@ -46,5 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_195640) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "flashcards", "topics"
   add_foreign_key "topics", "users"
 end

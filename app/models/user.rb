@@ -8,4 +8,5 @@ class User < ApplicationRecord
          jwt_revocation_strategy: JwtDenylist
 
   has_many :topics, dependent: :destroy
+  has_many :flashcards, through: :topics
 end
