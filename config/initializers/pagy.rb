@@ -7,7 +7,6 @@ require 'pagy/extras/standalone'
 Pagy::DEFAULT[:url] = '/'
 Pagy::DEFAULT[:metadata] = [:pages, :page, :count, :items]
 
-# I don't like these default Pagy metadata keys. IMO they are not self-explanatory enough - let's fix this.
 Pagy::DEFAULT[:metadata_key_overrides] = {
   items: :per_page,
   count: :total_count,
