@@ -20,7 +20,11 @@ shared_examples 'protected endpoint' do |method:, url:|
 
   context 'when authorization header is present' do
     context 'when access token is valid' do
-      subject { send(method, url, headers:) rescue nil } # we don't care about the response - just a status
+      subject do
+        send(method, url, headers:)
+      rescue StandardError
+        nil
+      end
 
       let(:headers) { authenticated_headers({}, user) }
 

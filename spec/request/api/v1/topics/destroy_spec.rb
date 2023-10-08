@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Topic, type: :request do
@@ -5,11 +7,11 @@ RSpec.describe Topic, type: :request do
     it_behaves_like 'protected endpoint', method: :delete, url: '/api/v1/topics/1'
 
     context 'when authorized' do
+      subject(:request) { delete "/api/v1/topics/#{id}", headers: }
+
       let(:user) { create(:user) }
       let(:headers) { authenticated_headers({}, user) }
       let(:id) { 1 }
-
-      subject(:request) { delete "/api/v1/topics/#{id}", headers: headers }
 
       context 'when topic does not exist' do
         it_behaves_like 'record not found'
@@ -30,7 +32,7 @@ RSpec.describe Topic, type: :request do
         before { request }
 
         it 'deletes topic' do
-          expect(Topic.count).to eq(0)
+          expect(described_class.count).to eq(0)
         end
 
         it_behaves_like 'response status', :no_content

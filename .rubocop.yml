@@ -26,6 +26,12 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
 Metrics/MethodLength:
   Max: 40
 

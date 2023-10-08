@@ -1,26 +1,28 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Topic, type: :request do
   describe 'GET /api/v1/topics' do
-    it_behaves_like 'protected endpoint', method: :get, url: '/api/v1/topics'
-
     before { create_list(:topic, 3, user:) }
+
+    it_behaves_like 'protected endpoint', method: :get, url: '/api/v1/topics'
 
     context 'when authorized' do
       let(:user) { create(:user) }
       let(:headers) { authenticated_headers({}, user) }
       let(:params) { {} }
-      let(:expected_records) { Topic.all }
+      let(:expected_records) { described_class.all }
       let(:serialized_records) { TopicSerializer.new(expected_records).serializable_hash }
 
-      let(:metadata) {
+      let(:metadata) do
         {
-          total_pages: (Topic.count.to_f / Pagy::DEFAULT[:items]).ceil,
+          total_pages: (described_class.count.to_f / Pagy::DEFAULT[:items]).ceil,
           current_page: Pagy::DEFAULT[:page],
           total_count: expected_records.count,
           per_page: Pagy::DEFAULT[:items]
         }
-      }
+      end
 
       let(:expected_response) do
         {
@@ -29,7 +31,7 @@ RSpec.describe Topic, type: :request do
         }
       end
 
-      before { get '/api/v1/topics', params: params, headers: headers }
+      before { get '/api/v1/topics', params:, headers: }
 
       it_behaves_like 'properly renders index endpoint'
 
@@ -37,16 +39,16 @@ RSpec.describe Topic, type: :request do
         let(:page) { 2 }
         let(:per_page) { 1 }
         let(:params) { { page:, per_page: } }
-        let(:expected_records) { [Topic.second] }
+        let(:expected_records) { [described_class.second] }
 
-        let(:metadata) {
+        let(:metadata) do
           {
-            total_pages: Topic.count / per_page,
+            total_pages: described_class.count / per_page,
             current_page: page,
-            total_count: Topic.count,
-            per_page: per_page
+            total_count: described_class.count,
+            per_page:
           }
-        }
+        end
 
         it_behaves_like 'properly renders index endpoint'
       end

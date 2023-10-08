@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 shared_examples 'properly renders index endpoint' do
   it 'returns a 200' do
     expect(response).to have_http_status(:ok)

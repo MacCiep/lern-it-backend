@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Topic, type: :request do
@@ -5,12 +7,12 @@ RSpec.describe Topic, type: :request do
     it_behaves_like 'protected endpoint', method: :get, url: '/api/v1/topics'
 
     context 'when authorized' do
+      subject(:request) { patch "/api/v1/topics/#{id}", params:, headers: }
+
       let(:user) { create(:user) }
       let(:headers) { authenticated_headers({}, user) }
       let(:id) { 1 }
-      let(:params) { { } }
-
-      subject(:request) { patch "/api/v1/topics/#{id}", params:, headers: headers }
+      let(:params) { {} }
 
       context 'when topic does not exist' do
         it_behaves_like 'record not found'
