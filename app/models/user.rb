@@ -6,4 +6,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :trackable,
          :recoverable, :validatable, :jwt_authenticatable,
          jwt_revocation_strategy: JwtDenylist
+
+  has_many :topics, dependent: :destroy
 end

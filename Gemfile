@@ -17,6 +17,8 @@ gem 'puma', '~> 5.0'
 gem 'devise', '~> 4.9'
 gem 'devise-jwt'
 
+gem 'jsonapi-serializer'
+gem 'pagy'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
@@ -47,6 +49,11 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'rspec-rails', '~> 6.0.0'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'timecop'
 end
 
 group :development do
