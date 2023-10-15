@@ -69,6 +69,13 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  FactoryBot::SyntaxRunner.class_eval do
+    include ActiveSupport::Testing::FileFixtures
+    include FileHelpers
+
+    self.file_fixture_path = Rails.root.join('spec', 'fixtures', 'files')
+  end
+
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|
       with.test_framework :rspec

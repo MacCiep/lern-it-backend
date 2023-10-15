@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   has_many :topics, dependent: :destroy
   has_many :flashcards, through: :topics
+  has_many :notes, through: :topics
 end

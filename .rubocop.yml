@@ -29,6 +29,9 @@ Style/Documentation:
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
+RSpec/FilePath:
+  Enabled: false
+
 Metrics/MethodLength:
   Max: 40
 

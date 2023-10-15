@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Topic, type: :request do
+RSpec.describe Api::V1::TopicsController, type: :request do
   describe 'POST /api/v1/topics' do
     it_behaves_like 'protected endpoint', method: :get, url: '/api/v1/topics'
 
@@ -24,7 +24,7 @@ RSpec.describe Topic, type: :request do
 
       context 'when params are valid' do
         let(:params) { { topic: { title: 'New title' } } }
-        let(:expected_response) { TopicSerializer.new(described_class.first).serializable_hash.to_json }
+        let(:expected_response) { TopicSerializer.new(Topic.first).serializable_hash.to_json }
 
         before { request }
 

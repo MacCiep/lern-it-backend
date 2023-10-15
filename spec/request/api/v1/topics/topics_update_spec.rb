@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Topic, type: :request do
+RSpec.describe Api::V1::TopicsController, type: :request do
   describe 'PATCH /api/v1/topics/:id' do
     it_behaves_like 'protected endpoint', method: :get, url: '/api/v1/topics'
 

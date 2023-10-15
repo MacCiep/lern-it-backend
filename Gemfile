@@ -19,6 +19,8 @@ gem 'devise-jwt'
 
 gem 'jsonapi-serializer'
 gem 'pagy'
+
+gem 'aws-sdk-s3'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
