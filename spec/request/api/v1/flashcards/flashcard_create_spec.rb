@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Flashcard, type: :request do
+RSpec.describe Api::V1::FlashcardsController, type: :request do
   describe 'POST /api/v1/flashcards' do
     it_behaves_like 'protected endpoint', method: :get, url: '/api/v1/flashcards'
 
@@ -24,7 +24,7 @@ RSpec.describe Flashcard, type: :request do
         let(:params) do
           { flashcard: { title: 'New title', question: 'Question', answer: 'Answer', topic_id: topic.id } }
         end
-        let(:expected_response) { FlashcardSerializer.new(described_class.first).serializable_hash.to_json }
+        let(:expected_response) { FlashcardSerializer.new(Flashcard.first).serializable_hash.to_json }
 
         context 'when topic does not belongs to user' do
           let(:topic) { create(:topic) }

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :topics, only: [:index, :show, :create, :update, :destroy]
       resources :flashcards, only: [:index, :create, :update, :destroy]
+      resources :notes, only: [:index, :create, :update, :destroy]
     end
   end
   # Defines the root path route ("/")

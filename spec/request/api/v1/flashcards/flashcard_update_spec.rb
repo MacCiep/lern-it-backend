@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Flashcard, type: :request do
+RSpec.describe Api::V1::FlashcardsController, type: :request do
   describe 'PATCH /api/v1/flashcards/:id' do
     it_behaves_like 'protected endpoint', method: :get, url: '/api/v1/flashcards'
 

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Topic, type: :request do
+RSpec.describe Api::V1::TopicsController, type: :request do
   describe 'DELETE /api/v1/topics/:id' do
     it_behaves_like 'protected endpoint', method: :delete, url: '/api/v1/topics/1'
 
@@ -32,7 +32,7 @@ RSpec.describe Topic, type: :request do
         before { request }
 
         it 'deletes topic' do
-          expect(described_class.count).to eq(0)
+          expect(Topic.count).to eq(0)
         end
 
         it_behaves_like 'response status', :no_content
