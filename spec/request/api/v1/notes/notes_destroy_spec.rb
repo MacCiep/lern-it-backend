@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Api::V1::NotesController, type: :request do
@@ -5,7 +7,7 @@ RSpec.describe Api::V1::NotesController, type: :request do
     it_behaves_like 'protected endpoint', method: :delete, url: '/api/v1/notes/1'
 
     context 'when authorized' do
-      subject(:request) { delete "/api/v1/notes/#{id}", headers: headers }
+      subject(:request) { delete "/api/v1/notes/#{id}", headers: }
 
       let(:user) { create(:user) }
       let(:headers) { authenticated_headers({}, user) }
@@ -23,8 +25,8 @@ RSpec.describe Api::V1::NotesController, type: :request do
       end
 
       context 'when note is assign to user' do
-        let(:topic) { create(:topic, user: user) }
-        let(:note) { create(:note, topic: topic) }
+        let(:topic) { create(:topic, user:) }
+        let(:note) { create(:note, topic:) }
         let(:id) { note.id }
         let(:params) { { note: { title: 'New title' } } }
 

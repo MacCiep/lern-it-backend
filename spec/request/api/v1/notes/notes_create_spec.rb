@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Api::V1::NotesController, type: :request do
@@ -5,7 +7,7 @@ RSpec.describe Api::V1::NotesController, type: :request do
     it_behaves_like 'protected endpoint', method: :get, url: '/api/v1/notes'
 
     context 'when authorized' do
-      subject(:request) { post '/api/v1/notes', params: params, headers: headers }
+      subject(:request) { post '/api/v1/notes', params:, headers: }
 
       let(:user) { create(:user) }
       let(:headers) { authenticated_headers({}, user) }
@@ -20,8 +22,8 @@ RSpec.describe Api::V1::NotesController, type: :request do
       end
 
       context 'when params are valid' do
-        let(:topic_id) { create(:topic, user: user).id }
-        let(:params) { { title: 'New title', priority: :low, topic_id:, file: fixture_file_upload("note_file.txt") } }
+        let(:topic_id) { create(:topic, user:).id }
+        let(:params) { { title: 'New title', priority: :low, topic_id:, file: fixture_file_upload('note_file.txt') } }
         let(:expected_response) { NoteSerializer.new(Note.first).serializable_hash.to_json }
 
         before { request }
@@ -33,7 +35,7 @@ RSpec.describe Api::V1::NotesController, type: :request do
         end
 
         it 'assigns file to note' do
-          expect(Note.first.file.attached?).to be_truthy
+          expect(Note.first.file).to be_attached
         end
       end
     end

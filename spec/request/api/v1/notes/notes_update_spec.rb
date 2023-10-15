@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Api::V1::NotesController, type: :request do
@@ -5,7 +7,7 @@ RSpec.describe Api::V1::NotesController, type: :request do
     it_behaves_like 'protected endpoint', method: :patch, url: '/api/v1/notes/1'
 
     context 'when authorized' do
-subject(:request) { patch "/api/v1/notes/#{id}", params: params, headers: headers }
+      subject(:request) { patch "/api/v1/notes/#{id}", params:, headers: }
 
       let(:user) { create(:user) }
       let(:headers) { authenticated_headers({}, user) }
@@ -24,8 +26,8 @@ subject(:request) { patch "/api/v1/notes/#{id}", params: params, headers: header
       end
 
       context 'when note is assign to user' do
-        let(:topic) { create(:topic, user: user) }
-        let(:note) { create(:note, topic: topic) }
+        let(:topic) { create(:topic, user:) }
+        let(:note) { create(:note, topic:) }
         let(:id) { note.id }
         let(:params) { { title: 'New title' } }
         let(:expected_response) { NoteSerializer.new(note.reload).serializable_hash.to_json }

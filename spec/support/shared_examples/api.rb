@@ -17,7 +17,7 @@ shared_examples 'record not found' do
 end
 
 shared_examples 'returns empty data' do
-  let(:expected_response) {
+  let(:expected_response) do
     {
       records: {
         data: []
@@ -29,7 +29,7 @@ shared_examples 'returns empty data' do
         per_page: 20
       }
     }
-  }
+  end
 
   it { expect(response.body).to eq(expected_response.to_json) }
 end
